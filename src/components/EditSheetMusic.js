@@ -7,8 +7,8 @@ function EditSheetMusic() {
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
 
-  let indexTracker = 0
   let updatedArrOfLines = [...arrOfLines]
+  let indexTracker = updatedArrOfLines.length
 
   const getSongs = () => {
     fetch('/api/songs')
@@ -34,15 +34,10 @@ function EditSheetMusic() {
       })
   }
 
-  const updateDisplayedLines = () => {
-    if (updatedArrOfLines !== null) {
-      true
-    }
-  }
-
   const addNewLine = () => {
     updatedArrOfLines.push([])
     updatedArrOfLines.push("")
+    SetArrOfLines(updatedArrOfLines)
   }
 
   const editSongs = (event) => {
@@ -65,9 +60,7 @@ function EditSheetMusic() {
   }
 
   useEffect(getSongs, [])
-  // useEffect(editSongs, [arrOfLines])
-  useEffect(updateDisplayedLines, [updatedArrOfLines])
-
+  
   return (
     <div className="EditSheetMusic">
       <header>
@@ -78,7 +71,7 @@ function EditSheetMusic() {
       <form onSubmit={editSongs} className="Edit-Lyrics-Chords">
         <input type="hidden" name="id" value="1"/>
 
-        {updatedArrOfLines.map((line, index) => {
+        {arrOfLines.map((line, index) => {
           let lineName = index
           indexTracker = index
           // console.log(line)
@@ -98,7 +91,7 @@ function EditSheetMusic() {
         })}
 
         <span onClick={addNewLine}>Add new line</span>
-        <p>Up to index {indexTracker + 1}</p>
+        <p>Up to index {indexTracker}</p>
 
 
         <button className="btn-primary">Save</button>
