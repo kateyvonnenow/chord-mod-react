@@ -11,12 +11,12 @@ function SheetMusic() {
       .then(res => res.json())
       .then(res => {
 
-        console.log(res)
+        // console.log(res)
 
-        const arrOfChords = res[0].chords.split('|')
-        console.log(arrOfChords)
-        const arrOfLyrics = res[0].lyrics.split('|')
-        console.log(arrOfLyrics)
+        const arrOfChords = res.chords.split('|')
+        // console.log(arrOfChords)
+        const arrOfLyrics = res.lyrics.split('|')
+        // console.log(arrOfLyrics)
 
         const arrOfLines = []
         for (let i=0; i<arrOfChords.length; i++) {
@@ -24,8 +24,8 @@ function SheetMusic() {
           arrOfLines.push(arrOfLyrics[i])
         }
 
-        SetSongTitle(res[0].title)
-        SetSongArtist(res[0].artist)
+        SetSongTitle(res.title)
+        SetSongArtist(res.artist)
         SetArrOfLines(arrOfLines)
       })
   }
