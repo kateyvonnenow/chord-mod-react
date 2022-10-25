@@ -2,32 +2,35 @@ import { useState, useEffect } from 'react'
 import './SheetMusic.scss'
 
 function SheetMusic() {
-  const [songTitle, SetSongTitle] = useState("Happy Birthday")
-  const [songArtist, SetSongArtist] = useState("Generic")
-  const [arrOfLines, SetArrOfLines] = useState([
-    [`      `, `G`, `           `, `D`, `  `],
-    "Happy birthday to you,",
-    [`      `, `D7`, `          `, `G`, `  `],
-    "Happy birthday to you,",
-    [`      `, `C`, `           `, `G`, `  `],
-    "Happy birthday, dear Jonathan,",
-    [`      `, `D7`, `          `, `G`, `  `],
-    "Happy birthday to you."])
-
-
-
+  const [songTitle, SetSongTitle] = useState("")
+  const [songArtist, SetSongArtist] = useState("")
+  const [arrOfLines, SetArrOfLines] = useState([[], ""])
 
   const getSongs = () => {
     fetch('/api/songs')
       .then(res => res.json())
-      .then(res => console.log(res))
+      .then(res => {
+
+        console.log(res)
+
+        const arrOfChords = res[0].chords.split('|')
+        console.log(arrOfChords)
+        const arrOfLyrics = res[0].lyrics.split('|')
+        console.log(arrOfLyrics)
+
+        const arrOfLines = []
+        for (let i=0; i<arrOfChords.length; i++) {
+          arrOfLines.push(arrOfChords[i].split('-'))
+          arrOfLines.push(arrOfLyrics[i])
+        }
+
+        SetSongTitle(res[0].title)
+        SetSongArtist(res[0].artist)
+        SetArrOfLines(arrOfLines)
+      })
   }
 
   useEffect(getSongs, [])
-
-
-
-
 
   return (
     <div className="SheetMusic">
@@ -51,8 +54,6 @@ function SheetMusic() {
           }
         })}
       </section>
-
-
     </div>
   )
 }
