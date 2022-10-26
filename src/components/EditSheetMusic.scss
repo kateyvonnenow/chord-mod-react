@@ -20,6 +20,26 @@
     padding: 20px;
     font-family: 'Courier New', Courier, monospace;
 
+    .Edit-Title-Artist {
+      margin-bottom: 20px;
+
+      input {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+
+      #EditSongTitle {
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      #EditSongArtist {
+        font-style: italic;
+        font-size: 1rem;
+        padding: 5px;
+      }
+    }
+
     input {
       font-family: 'Courier New', Courier, monospace;
       width: 500px;
@@ -38,6 +58,12 @@
 
     .lyric-line {
       margin-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
     }
   }
 }

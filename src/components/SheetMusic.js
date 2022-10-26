@@ -6,8 +6,8 @@ function SheetMusic() {
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
 
-  const getSongs = () => {
-    fetch('/api/songs')
+  const getSong = () => {
+    fetch('/api/songs/1')
       .then(res => res.json())
       .then(res => {
 
@@ -30,7 +30,7 @@ function SheetMusic() {
       })
   }
 
-  useEffect(getSongs, [])
+  useEffect(getSong, [])
 
   return (
     <div className="SheetMusic">
