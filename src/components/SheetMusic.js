@@ -5,10 +5,11 @@ function SheetMusic({ songId }) {
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
+  const [uniqueSongId, SetSongId] = useState(songId)
 
-  const getSong = ( songId ) => {
-    console.log('getSong is working' + songId)
-    fetch(`/api/songs/${songId}`)
+  const getSong = () => {
+    console.log('getSong is working' + uniqueSongId)
+    fetch(`/api/songs/${uniqueSongId}`)
       .then(res => res.json())
       .then(res => {
 
@@ -31,7 +32,7 @@ function SheetMusic({ songId }) {
       })
   }
 
-  useEffect(getSong(songId), [])
+  useEffect(getSong, [])
 
   return (
     <div className="SheetMusic">
