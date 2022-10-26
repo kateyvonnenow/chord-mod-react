@@ -1,10 +1,12 @@
 import SheetMusic from './SheetMusic'
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import './ListOfSongs.scss'
 
 function ListOfSongs() {
 
   const [allSongs, SetAllSongs] = useState([])
+  const navigate = useNavigate();
 
   const getAllSongs = () => {
     fetch('/api/songs')
@@ -17,14 +19,26 @@ function ListOfSongs() {
 
   useEffect(getAllSongs, [])
 
+  const navigateToSheetMusic = ( songTitle ) => {
+    console.log(songTitle)
+    navigate(`/songs/${songTitle}`)
+  }
+
   return (
     <div className="AllSongs">
       <h1>List of Songs</h1>
       <section className="List-Of-Songs">
         {allSongs.map((song, index) => {
+          let songTitleNoSpace = song.title.replace(/\s/g, '')
+
           return (
-            <div onClick={() => SheetMusic(song.id)} className="song-list" key={index}>
-              <h3 key={index}>{song.title}</h3>
+            <div className="song-list" key={index}>
+              <div onClick={() => navigateToSheetMusic(songTitleNoSpace)}>
+                <h3>{song.title}</h3>
+              </div>
+              <Routes>
+                <Route path={`/${songTitleNoSpace}`} element={<SheetMusic songId={song.id}/>}></Route>
+              </Routes>
             </div>
           )
         })}

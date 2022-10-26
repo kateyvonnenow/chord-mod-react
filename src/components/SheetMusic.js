@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react'
 import './SheetMusic.scss'
 
-function SheetMusic(songId) {
+function SheetMusic({ songId }) {
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
-  // const [songId, SetSongId] = useState(songId)
 
-  const getSong = id => {
-    fetch(`/api/songs/${id}`)
+  const getSong = ( songId ) => {
+    console.log('getSong is working' + songId)
+    fetch(`/api/songs/${songId}`)
       .then(res => res.json())
       .then(res => {
 
@@ -31,7 +31,7 @@ function SheetMusic(songId) {
       })
   }
 
-  useEffect(getSong, [])
+  useEffect(getSong(songId), [])
 
   return (
     <div className="SheetMusic">
