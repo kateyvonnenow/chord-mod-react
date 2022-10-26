@@ -2,17 +2,19 @@ import { useState, useEffect } from 'react'
 import SheetMusic from './SheetMusic'
 import './EditSheetMusic.scss'
 
-function EditSheetMusic() {
+function EditSheetMusic({ songId }) {
   // state
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
+  const [uniqueSongId, SetSongId] = useState(songId)
 
   let updatedArrOfLines = [...arrOfLines]
   let indexTracker = updatedArrOfLines.length
 
   const getSong = () => {
-    fetch('/api/songs/1/edit')
+    console.log('getSong is working' + uniqueSongId)
+    fetch(`/api/songs/${uniqueSongId}/edit`)
       .then(res => res.json())
       .then(res => {
 

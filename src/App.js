@@ -1,7 +1,9 @@
-import SheetMusic from './components/SheetMusic'
-import EditSheetMusic from './components/EditSheetMusic'
-import ListOfSongs from './components/ListOfSongs'
-import Home from './components/Home'
+// import SheetMusic from './components/SheetMusic'
+// import EditSheetMusic from './components/EditSheetMusic'
+// import ListOfSongs from './components/ListOfSongs'
+// import Home from './components/Home'
+import AllRoutes from './components/AllRoutes'
+import { useState, useEffect } from 'react'
 
 import { 
   BrowserRouter as Router, 
@@ -12,6 +14,11 @@ import {
 
 
 function App() {
+
+  const [allSongs, SetAllSongs] = useState([])
+  const [currentSongId, SetCurrentSongId] = useState()
+  const [currentSongTitle, SetCurrentSongTitle] = useState()
+
   return (
     <Router>
       <nav>
@@ -20,10 +27,15 @@ function App() {
       </nav>
 
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Home name="Kate"/>}></Route>
-          <Route path="/songs/*" element={<ListOfSongs />}></Route>
-        </Routes>
+        <AllRoutes 
+          setAllSongs={SetAllSongs} 
+          setCurrentSongId={SetCurrentSongId} 
+          setCurrentSongTitle={SetCurrentSongTitle}
+
+          allSongs={allSongs}
+          currentSongId={currentSongId}
+          currentSongTitle={currentSongTitle}
+        />
       </div>
     </Router>
   );

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './SheetMusic.scss'
 
-function SheetMusic({ songId }) {
+function SheetMusic({ songId, currentSongTitle }) {
+
+  const navigate = useNavigate();
+
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
@@ -34,6 +38,13 @@ function SheetMusic({ songId }) {
 
   useEffect(getSong, [])
 
+  const navigateToEditSheetMusic = ( songId, songTitle ) => {
+    console.log(songTitle)
+    console.log(songId)
+
+    navigate(`/edit/${songTitle}`)
+  }
+
   return (
     <div className="SheetMusic">
       <header>
@@ -56,6 +67,7 @@ function SheetMusic({ songId }) {
           }
         })}
       </section>
+      <span onClick={() => navigateToEditSheetMusic(uniqueSongId, currentSongTitle)}>Edit</span>
     </div>
   )
 }
