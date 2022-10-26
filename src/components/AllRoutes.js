@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 import SheetMusic from './SheetMusic'
 import EditSheetMusic from './EditSheetMusic'
+import CreateSheetMusic from './CreateSheetMusic'
 import ListOfSongs from './ListOfSongs'
 import Home from './Home'
 
@@ -16,7 +17,7 @@ function AllRoutes({
 }) {
   return (
     <Routes>
-      <Route path="/" element={<Home name="Kate"/>}></Route>
+      <Route path="/" element={<Home name="Stranger,"/>}></Route>
       <Route path="/songs/*" element={<ListOfSongs 
         setAllSongs={setAllSongs} 
         setCurrentSongId={setCurrentSongId} 
@@ -35,6 +36,9 @@ function AllRoutes({
       <Route path={`/edit/${currentSongTitle}`} element={<EditSheetMusic 
         songId={currentSongId} 
         currentSongTitle={currentSongTitle}/>}>
+      </Route>
+      <Route path={`/create`} element={<CreateSheetMusic />}>
+
       </Route>
     </Routes>
   )

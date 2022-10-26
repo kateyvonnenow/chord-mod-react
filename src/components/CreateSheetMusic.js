@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SheetMusic from './SheetMusic'
-import './EditSheetMusic.scss'
+import './CreateSheetMusic.scss'
 
-function EditSheetMusic({ songId }) {
+function CreateSheetMusic({ songId }) {
 
   const navigate = useNavigate();
 
@@ -15,33 +15,6 @@ function EditSheetMusic({ songId }) {
 
   let updatedArrOfLines = [...arrOfLines]
   let indexTracker = updatedArrOfLines.length
-
-  const getSong = () => {
-    console.log('getSong is working' + uniqueSongId)
-    fetch(`/api/songs/${uniqueSongId}/edit`)
-      .then(res => res.json())
-      .then(res => {
-
-        // console.log(res)
-
-        const arrOfChords = res.chords.split('|')
-        // console.log(arrOfChords)
-        const arrOfLyrics = res.lyrics.split('|')
-        // console.log(arrOfLyrics)
-
-        const arrOfLines = []
-        for (let i=0; i<arrOfChords.length; i++) {
-          arrOfLines.push(arrOfChords[i].split('-'))
-          arrOfLines.push(arrOfLyrics[i])
-        }
-
-        SetSongTitle(res.title)
-        SetSongArtist(res.artist)
-        SetArrOfLines(arrOfLines)
-      })
-  }
-
-  useEffect(getSong, [])
 
   const addNewLine = () => {
     updatedArrOfLines.push([])
@@ -55,9 +28,8 @@ function EditSheetMusic({ songId }) {
     SetArrOfLines(updatedArrOfLines)
   }
 
-
-  // Sending Song update to Backend
-  const editSongs = (event) => {
+  // Adding song to Backend
+  const addSong = (event) => {
     event.preventDefault()
     const form = event.target
     const data = Object.fromEntries(new FormData(form))
@@ -84,43 +56,32 @@ function EditSheetMusic({ songId }) {
       .join('|')
 
     if (arrOfLines !== null) {
-      fetch(`/api/songs/${data.id}`, {
-        method: 'PUT',
+      fetch(`/api/songs/`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, artist, lyrics, chords })
       })
         .then(res => res.json())
-        .then(updatedSong => {
-          console.log(updatedSong)
+        .then(addSong => {
+          console.log(addSong)
         })
     }
-
-    navigate(`/chords/${title.replace(/\s/g, '')}`)
-  }
-
-  const deleteSong = (event) => {
-    event.preventDefault()
-    fetch(`/api/songs/${uniqueSongId}`, {
-      method: 'DELETE'
-    })
-      .then(res => res.json())
-      .then(message => {
-        console.log(message)
-      })
 
     navigate(`/songs`)
   }
 
-  return (
-    <div className="EditSheetMusic">
 
-      <form onSubmit={editSongs} className="Edit-Lyrics-Chords">
-        <input type="hidden" name="id" value={uniqueSongId}/>
+  
+  return (
+    <div className="CreateSheetMusic">
+
+      <form onSubmit={addSong} className="Edit-Lyrics-Chords">
+        <input type="hidden" name="id" value="1"/>
 
         <section className="Edit-Title-Artist">
-          <input type="text" name="song-title" id="EditSongTitle" placeholder="Song Title" defaultValue={songTitle} />
+          <input type="text" name="song-title" id="EditSongTitle" placeholder="Song Title"/>
 
-          <input type="text" name="song-artist" id="EditSongArtist" placeholder="Artist" defaultValue={songArtist} />
+          <input type="text" name="song-artist" id="EditSongArtist" placeholder="Artist"/>
         </section>
         
 
@@ -132,13 +93,12 @@ function EditSheetMusic({ songId }) {
           if (typeof line === "string") {
             lineName = `lyric-line-${index}`
             return (
-              <input type="text" name={lineName} className="lyric-line" key={index} placeholder={line} defaultValue={line}/>
+              <input type="text" name={lineName} className="lyric-line" key={index} placeholder="Write the lyrics here!"/>
             )
           } else {
             lineName = `chord-line-${index}`
-            let defaultValue = line.join('')
             return (
-              <input type="text" name={lineName} className="chord-line" key={index} placeholder={line.join('')} defaultValue={defaultValue}/>
+              <input type="text" name={lineName} className="chord-line" key={index} placeholder="Write the chords in the correct spot here!"/>
             )
           }
         })}
@@ -150,11 +110,10 @@ function EditSheetMusic({ songId }) {
         
         <p>Up to index {indexTracker + 1}</p>
         
-        <button className="btn-primary save">Save</button>
+        <button className="btn-primary">Add</button>
       </form>
-      <span onClick={deleteSong}className="btn-primary delete">Delete</span>
     </div>
   )
 }
 
-export default EditSheetMusic;
+export default CreateSheetMusic;

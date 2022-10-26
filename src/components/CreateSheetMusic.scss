@@ -1,0 +1,69 @@
+.CreateSheetMusic {
+  header {
+    display: grid;
+    justify-content: center;
+    gap: 0px;
+    margin: 20px;
+
+    h1 {
+      margin: 0;
+    }
+    p {
+      margin: auto
+    }
+  }
+
+  .Edit-Lyrics-Chords {
+    background-color: pink;
+    width: 500px;
+    margin: auto;
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+
+    .Edit-Title-Artist {
+      margin-bottom: 20px;
+
+      input {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+      }
+
+      #EditSongTitle {
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+
+      #EditSongArtist {
+        font-style: italic;
+        font-size: 1rem;
+        padding: 5px;
+      }
+    }
+
+    input {
+      font-family: 'Courier New', Courier, monospace;
+      width: 500px;
+      padding: 10px;
+    }
+
+    .chord-line {
+      display: flex;
+      font-weight: bold;
+      color: rgb(0, 145, 218);
+
+      pre {
+        margin-bottom: 0px;
+      }
+    }
+
+    .lyric-line {
+      margin-bottom: 10px;
+    }
+
+    .controls {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+}

@@ -1,7 +1,5 @@
-import SheetMusic from './SheetMusic'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
-import AllRoutes from './AllRoutes'
 import './ListOfSongs.scss'
 
 function ListOfSongs({ 
@@ -12,10 +10,6 @@ function ListOfSongs({
   currentSongId,
   currentSongTitle
 }) {
-
-  // const [allSongs, SetAllSongs] = useState([])
-  // const [currentSongId, SetCurrentSongId] = useState()
-  // const [currentSongTitle, SetCurrentSongTitle] = useState()
   const navigate = useNavigate();
 
   const getAllSongs = () => {
@@ -38,8 +32,6 @@ function ListOfSongs({
 
     navigate(`/chords/${songTitleNoSpace}`)
   }
-
-  // useEffect(navigateToSheetMusic, [setCurrentSongId, setCurrentSongTitle])
 
   return (
     <div className="AllSongs">
