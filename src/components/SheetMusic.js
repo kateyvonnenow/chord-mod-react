@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import './SheetMusic.scss'
 
-function SheetMusic() {
+function SheetMusic(songId) {
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
+  // const [songId, SetSongId] = useState(songId)
 
-  const getSong = () => {
-    fetch('/api/songs/1')
+  const getSong = id => {
+    fetch(`/api/songs/${id}`)
       .then(res => res.json())
       .then(res => {
 

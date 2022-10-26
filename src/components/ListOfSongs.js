@@ -1,36 +1,37 @@
+import SheetMusic from './SheetMusic'
 import { useState, useEffect } from 'react'
+import './ListOfSongs.scss'
 
 function ListOfSongs() {
 
-  const [allSongs, SetAllSongs] = useState({})
+  const [allSongs, SetAllSongs] = useState([])
 
   const getAllSongs = () => {
     fetch('/api/songs')
       .then(res => res.json())
       .then(res => {
-
-        // console.log(res)
-
-        const arrOfChords = res.chords.split('|')
-        // console.log(arrOfChords)
-        const arrOfLyrics = res.lyrics.split('|')
-        // console.log(arrOfLyrics)
-
-        const arrOfLines = []
-        for (let i=0; i<arrOfChords.length; i++) {
-          arrOfLines.push(arrOfChords[i].split('-'))
-          arrOfLines.push(arrOfLyrics[i])
-        }
-
-        SetSongTitle(res.title)
-        SetSongArtist(res.artist)
-        SetArrOfLines(arrOfLines)
+        SetAllSongs(res)
+        console.log(res)
       })
   }
 
-  useEffect(getSong, [])
+  useEffect(getAllSongs, [])
 
   return (
-    <h1>All Songs</h1>
+    <div className="AllSongs">
+      <h1>List of Songs</h1>
+      <section className="List-Of-Songs">
+        {allSongs.map((song, index) => {
+          return (
+            <div onClick={() => SheetMusic(song.id)} className="song-list" key={index}>
+              <h3 key={index}>{song.title}</h3>
+            </div>
+          )
+        })}
+      </section>
+    </div>
+
   )
 }
+
+export default ListOfSongs;
