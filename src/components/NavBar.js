@@ -9,8 +9,7 @@ function NavBar() {
     <div className="NavMenu">
       <nav>
         <Link to="/">Home</Link>
-        <Link to="songs">Songs</Link>
-        <Link to="/create">Add song</Link>
+        <Link to="/songs">Songs</Link>
       </nav>
     </div>
 

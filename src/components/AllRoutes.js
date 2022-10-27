@@ -18,7 +18,7 @@ function AllRoutes({
   return (
     <Routes>
       <Route path="/" element={<Home name="Stranger,"/>}></Route>
-      <Route path="/songs/*" element={<ListOfSongs 
+      <Route path="/songs/" element={<ListOfSongs 
         setAllSongs={setAllSongs} 
         setCurrentSongId={setCurrentSongId} 
         setCurrentSongTitle={setCurrentSongTitle}

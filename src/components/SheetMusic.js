@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SheetMusic.scss'
 import Piano from './Piano'
+import NavBar from './NavBar'
 
 function SheetMusic({ songId, currentSongTitle }) {
 
@@ -48,10 +49,20 @@ function SheetMusic({ songId, currentSongTitle }) {
 
   return (
     <div className="SheetMusic">
+      <section className="SheetNavBar">
+        <NavBar />
+      </section>
       <header>
         <h1>{songTitle}</h1>
-        <p>{songArtist}</p>
+        <div className="controls">
+          <p> by {songArtist}</p>
+          <span onClick={() => navigateToEditSheetMusic(uniqueSongId, currentSongTitle)} class="material-symbols-outlined">edit</span>
+        </div>
       </header>
+
+      <section className="PianoSection">
+        <Piano />
+      </section>
 
       <section className="Lyrics-Chords">
         {arrOfLines.map((line, index) => {
@@ -68,8 +79,9 @@ function SheetMusic({ songId, currentSongTitle }) {
           }
         })}
       </section>
-      <span onClick={() => navigateToEditSheetMusic(uniqueSongId, currentSongTitle)}>Edit</span>
-      <Piano />
+
+
+      
     </div>
   )
 }

@@ -13,12 +13,13 @@
       font-size: 1rem;
       padding: 10px;
       border-radius: 10px;
-      transition: 1s;
+      transition: 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 5px;
     }
   
     a:hover {
       color: orangered;
-      text-decoration: underline;
     }
   }
 }

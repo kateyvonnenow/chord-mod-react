@@ -1,24 +1,53 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .SheetMusic {
+  .SheetNavBar {
+    position: fixed;
+    left: 2rem;
+    top: -2rem;
+  }
+
   header {
     display: grid;
     justify-content: center;
     gap: 0px;
     margin: 20px;
+    position: fixed;
+    top: 6rem;
+    right: 50%;
+    
 
     h1 {
-      margin: 0;
+      margin: 10px;
+      font-size: 4rem;
     }
-    p {
-      margin: auto
+
+    .controls {
+      display: flex;
+      justify-content: right;
+      gap: 20px;
+      align-items: center;
+
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      .material-symbols-outlined:hover {
+        cursor: pointer;
+        color: rgb(255, 60, 92);
+      }
     }
+
   }
 
   .Lyrics-Chords {
-    background-color: pink;
     width: 500px;
-    margin: auto;
+    margin-left: 60%;
+    margin-top: 5rem;
     padding: 20px;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
 
     .chord-line {
       display: flex;
@@ -29,5 +58,12 @@
         margin-bottom: 0px;
       }
     }
+  }
+
+  .PianoSection {
+    position: fixed;
+    top: 20rem;
+    right: 50%;
+    bottom: 10px;
   }
 }

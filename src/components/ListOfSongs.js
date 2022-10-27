@@ -35,11 +35,14 @@ function ListOfSongs({
   }
 
   const playHoverSoundEffect = () => {
-    
+
   }
 
   return (
     <div className="AllSongs">
+      <section className="ListNavBar">
+        <NavBar />
+      </section>
       <h1>Browse all Chords + Lyrics</h1>
 
       <section className="List-Of-Songs">

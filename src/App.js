@@ -13,8 +13,6 @@ function App() {
 
   return (
     <Router>
-      <NavBar />
-
       <div className="App">
         <AllRoutes 
           setAllSongs={SetAllSongs} 

@@ -16,11 +16,10 @@ import Gb from '../notes/Gb.mp3'
 // { A, Ab, B, Bb, C, D, Db, E, Eb, F, G, Gb }
 
 function Piano() {
-  document.addEventListener('keydown', buttonKey => {
+  document.addEventListener('keypress', buttonKey => {
     console.log(buttonKey.key)
-    if (buttonKey.repeat) { 
-      return 
-    } else if (buttonKey.key === 'z') { 
+    if (buttonKey.repeat) return
+    if (buttonKey.key === 'z') { 
       playNote(C) 
     } else if (buttonKey.key === 'x') { 
       playNote(D) 
