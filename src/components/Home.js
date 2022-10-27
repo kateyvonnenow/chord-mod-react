@@ -9,7 +9,7 @@ function Home(props) {
       <section className="HomeNavBar">
         <NavBar />
       </section>
-      <h1>Welcome to ChordMod!</h1>
+      <h1>Welcome to ChordMod.</h1>
 
       <Piano />
     </div>

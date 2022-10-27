@@ -16,35 +16,35 @@ import Gb from '../notes/Gb.mp3'
 // { A, Ab, B, Bb, C, D, Db, E, Eb, F, G, Gb }
 
 function Piano() {
-  document.addEventListener('keypress', buttonKey => {
-    console.log(buttonKey.key)
-    if (buttonKey.repeat) return
-    if (buttonKey.key === 'z') { 
-      playNote(C) 
-    } else if (buttonKey.key === 'x') { 
-      playNote(D) 
-    } else if (buttonKey.key === 'c') { 
-      playNote(E) 
-    } else if (buttonKey.key === 'v') { 
-      playNote(F) 
-    } else if (buttonKey.key === 'b') { 
-      playNote(G) 
-    } else if (buttonKey.key === 'n') { 
-      playNote(A) 
-    } else if (buttonKey.key === 'm') { 
-      playNote(B) 
-    } else if (buttonKey.key === 's') { 
-      playNote(Db) 
-    } else if (buttonKey.key === 'd') { 
-      playNote(Eb) 
-    } else if (buttonKey.key === 'g') { 
-      playNote(Gb) 
-    } else if (buttonKey.key === 'h') { 
-      playNote(Ab) 
-    } else if (buttonKey.key === 'j') { 
-      playNote(Bb) 
-    } 
-  })
+  // document.addEventListener('keypress', buttonKey => {
+  //   console.log(buttonKey.key)
+  //   if (buttonKey.repeat) return
+  //   if (buttonKey.key === 'z') { 
+  //     playNote(C) 
+  //   } else if (buttonKey.key === 'x') { 
+  //     playNote(D) 
+  //   } else if (buttonKey.key === 'c') { 
+  //     playNote(E) 
+  //   } else if (buttonKey.key === 'v') { 
+  //     playNote(F) 
+  //   } else if (buttonKey.key === 'b') { 
+  //     playNote(G) 
+  //   } else if (buttonKey.key === 'n') { 
+  //     playNote(A) 
+  //   } else if (buttonKey.key === 'm') { 
+  //     playNote(B) 
+  //   } else if (buttonKey.key === 's') { 
+  //     playNote(Db) 
+  //   } else if (buttonKey.key === 'd') { 
+  //     playNote(Eb) 
+  //   } else if (buttonKey.key === 'g') { 
+  //     playNote(Gb) 
+  //   } else if (buttonKey.key === 'h') { 
+  //     playNote(Ab) 
+  //   } else if (buttonKey.key === 'j') { 
+  //     playNote(Bb) 
+  //   } 
+  // })
 
   const playNote = (key) => {
     const noteAudio = new Audio(key)

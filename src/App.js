@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 function App() {
 
   const [allSongs, SetAllSongs] = useState([])
-  const [currentSongId, SetCurrentSongId] = useState()
-  const [currentSongTitle, SetCurrentSongTitle] = useState()
+  const [currentSongId, SetCurrentSongId] = useState('')
+  const [currentSongTitle, SetCurrentSongTitle] = useState('')
 
   return (
     <Router>

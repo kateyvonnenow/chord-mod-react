@@ -28,13 +28,13 @@ function AllRoutes({
         currentSongTitle={currentSongTitle}
         />}>  
       </Route>
-      <Route path={`/chords/${currentSongTitle}`} element={<SheetMusic 
-        songId={currentSongId}
+      <Route path={`/chords`} element={<SheetMusic 
+        currentSongId={currentSongId}
         currentSongTitle={currentSongTitle}
         />}>
       </Route>
-      <Route path={`/edit/${currentSongTitle}`} element={<EditSheetMusic 
-        songId={currentSongId} 
+      <Route path={`/edit`} element={<EditSheetMusic 
+        currentSongId={currentSongId} 
         currentSongTitle={currentSongTitle}/>}>
       </Route>
       <Route path={`/create`} element={<CreateSheetMusic />}>

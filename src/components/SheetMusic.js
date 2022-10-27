@@ -4,14 +4,19 @@ import './SheetMusic.scss'
 import Piano from './Piano'
 import NavBar from './NavBar'
 
-function SheetMusic({ songId, currentSongTitle }) {
-
+function SheetMusic({ currentSongId, currentSongTitle }) {
   const navigate = useNavigate();
+  const localStorageSongId = localStorage.getItem('currentSongId')
+  console.log(localStorageSongId)
+
+  if (currentSongId == "") {
+    currentSongId = localStorageSongId
+  }
 
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
-  const [uniqueSongId, SetSongId] = useState(songId)
+  const [uniqueSongId, SetSongId] = useState(currentSongId)
 
   const getSong = () => {
     console.log('getSong is working' + uniqueSongId)
@@ -39,12 +44,15 @@ function SheetMusic({ songId, currentSongTitle }) {
   }
 
   useEffect(getSong, [])
+  useEffect(() => {
+    localStorage.setItem('currentSongId', currentSongId);
+  }, [currentSongId])
 
-  const navigateToEditSheetMusic = ( songId, songTitle ) => {
-    console.log(songTitle)
-    console.log(songId)
+  const navigateToEditSheetMusic = ( currentSongId, songTitle ) => {
+    // console.log(songTitle)
+    // console.log(currentSongId)
 
-    navigate(`/edit/${songTitle}`)
+    navigate(`/edit`)
   }
 
   return (
@@ -56,7 +64,7 @@ function SheetMusic({ songId, currentSongTitle }) {
         <h1>{songTitle}</h1>
         <div className="controls">
           <p> by {songArtist}</p>
-          <span onClick={() => navigateToEditSheetMusic(uniqueSongId, currentSongTitle)} class="material-symbols-outlined">edit</span>
+          <span onClick={() => navigateToEditSheetMusic(uniqueSongId, currentSongTitle)} className="material-symbols-outlined">edit</span>
         </div>
       </header>
 

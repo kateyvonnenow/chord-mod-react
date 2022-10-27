@@ -1,4 +1,6 @@
 .Home {
+  position: fixed;
+  left: 350px;
   display: grid;
   justify-content: center;
   margin-top: 2rem;
@@ -12,5 +14,35 @@
   h1 {
     font-size: 4rem;
     text-align: center;
+    animation: fadeIn 1s ease-out;
+    margin-top: 40px
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0%;
+      margin-top: 80px;
+    }
+
+    100% {
+      opacity: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  .PianoSpace {
+    animation: fadeInPiano 1.2s ease-out;
+  }
+
+  @keyframes fadeInPiano {
+    0% {
+      opacity: 0%;
+      margin-top: 10%;
+    }
+
+    100% {
+      opacity: 100%;
+      margin-top: 0%;
+    }
   }
 }

@@ -9,7 +9,7 @@ function NavBar() {
     <div className="NavMenu">
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/songs">Songs</Link>
+        <Link to="/songs">Browse</Link>
       </nav>
     </div>
 

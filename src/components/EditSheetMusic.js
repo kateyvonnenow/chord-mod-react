@@ -3,15 +3,21 @@ import { useNavigate } from 'react-router-dom'
 import SheetMusic from './SheetMusic'
 import './EditSheetMusic.scss'
 
-function EditSheetMusic({ songId }) {
+function EditSheetMusic({ currentSongId }) {
 
   const navigate = useNavigate();
+  const localStorageSongId = localStorage.getItem('currentSongId')
+  console.log(localStorageSongId)
+
+  if (currentSongId == "") {
+    currentSongId = localStorageSongId
+  }
 
   // state
   const [songTitle, SetSongTitle] = useState("")
   const [songArtist, SetSongArtist] = useState("")
   const [arrOfLines, SetArrOfLines] = useState([[], ""])
-  const [uniqueSongId, SetSongId] = useState(songId)
+  const [uniqueSongId, SetSongId] = useState(currentSongId)
 
   let updatedArrOfLines = [...arrOfLines]
   let indexTracker = updatedArrOfLines.length
@@ -95,7 +101,7 @@ function EditSheetMusic({ songId }) {
         })
     }
 
-    navigate(`/chords/${title.replace(/\s/g, '')}`)
+    navigate(`/chords`)
   }
 
   const deleteSong = (event) => {

@@ -3,22 +3,92 @@
   display: grid;
   justify-content: center;
 
-  h1 {
-    font-size: 4rem;
-  }
+  .fixed-browse-top {
+    position: fixed;
+    left: 323px;
+    justify-content: center;
+    display: grid;
 
+    h1 {
+      font-size: 4rem;
+      animation: fadeIn 1s ease-out;
+      margin-top: 40px;
+    }
+  
+    @keyframes fadeIn {
+      0% {
+        opacity: 0%;
+        margin-top: 80px;
+      }
+  
+      100% {
+        opacity: 100%;
+        margin-top: 40px;
+      }
+    }
+  
+    .container {
+      margin: auto;
+      margin-bottom: 20px;
+      background: #fff;
+      height: 30px;
+      border-radius: 30px;
+      border: 1px solid rgb(158, 158, 158);
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      transition: 0.8s;
+      // box-shadow: 0 0 25px rgb(199, 199, 199);
+  
+      input {
+        background: transparent;
+        border: none;
+        outline: none;
+        width: 0px;
+        font-weight: 500;
+        font-size: 16px;
+        transition: 0.8s;
+      }
+  
+      input:focus {
+        width: 300px;
+      }
+  
+      a:hover {
+        cursor: pointer;
+      }
+    }
+  
+    .container:hover {
+      input {
+        width: 300px;
+      }
+    }
+  
+    .faded-white {
+      width: 100%;
+      height: 50%;
+      position: fixed;
+      // background-image: url("../images/test.png");
+      z-index: -1;
+    }
+  }
+  
   .List-Of-Songs {
     display: grid;
     justify-content: center;
+    margin-top: 23rem;
+    animation: fadeInlist 1s ease-out;
 
     .song-list {
-      background-color: rgb(230, 230, 230);
+      background-color: rgb(243, 243, 243);
       padding: 10px;
       padding-left: 20px;
       margin: 5px;
       border-radius: 20px;
       width: 600px;
       transition: 0.2s;
+      letter-spacing: 1px;
     }
 
     .song-list:hover {
@@ -27,6 +97,18 @@
       padding-bottom: 50px;
       color: white;
       cursor: pointer;
+    }
+  }
+
+  @keyframes fadeInList {
+    0% {
+      opacity: 0%;
+      margin-top: 50rem;
+    }
+
+    100% {
+      opacity: 100%;
+      margin-top: 23rem;
     }
   }
 }
