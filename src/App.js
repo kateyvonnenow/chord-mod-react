@@ -1,5 +1,6 @@
 import AllRoutes from './components/AllRoutes'
 import { useState } from 'react'
+import NavBar from './components/NavBar'
 
 import { BrowserRouter as Router, Link } from 'react-router-dom'
 
@@ -12,11 +13,7 @@ function App() {
 
   return (
     <Router>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="songs">Songs</Link>
-        <Link to="/create">Add song</Link>
-      </nav>
+      <NavBar />
 
       <div className="App">
         <AllRoutes 

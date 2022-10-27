@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './SheetMusic.scss'
+import Piano from './Piano'
 
 function SheetMusic({ songId, currentSongTitle }) {
 
@@ -68,6 +69,7 @@ function SheetMusic({ songId, currentSongTitle }) {
         })}
       </section>
       <span onClick={() => navigateToEditSheetMusic(uniqueSongId, currentSongTitle)}>Edit</span>
+      <Piano />
     </div>
   )
 }

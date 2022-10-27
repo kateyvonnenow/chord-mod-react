@@ -1,0 +1,16 @@
+.Home {
+  display: grid;
+  justify-content: center;
+  margin-top: 2rem;
+
+  .NavBar {
+    nav {
+      justify-content: right;
+    }
+  }
+
+  h1 {
+    font-size: 4rem;
+    text-align: center;
+  }
+}

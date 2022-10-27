@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 import './ListOfSongs.scss'
+import NavBar from './NavBar'
 
 function ListOfSongs({ 
   setAllSongs, 
@@ -33,9 +34,14 @@ function ListOfSongs({
     navigate(`/chords/${songTitleNoSpace}`)
   }
 
+  const playHoverSoundEffect = () => {
+    
+  }
+
   return (
     <div className="AllSongs">
-      <h1>List of Songs</h1>
+      <h1>Browse all Chords + Lyrics</h1>
+
       <section className="List-Of-Songs">
         {allSongs.map((song, index) => {
           console.log(song)
@@ -44,6 +50,7 @@ function ListOfSongs({
             <div className="song-list" key={index}>
               <div onClick={() => navigateToSheetMusic(song.id, songTitleNoSpace)}>
                 <h3>{song.title}</h3>
+                <p> by {song.artist}</p>
               </div>
             </div>
           )
