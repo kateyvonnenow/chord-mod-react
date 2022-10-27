@@ -1,27 +1,68 @@
 .EditSheetMusic {
+  .background {
+    position: fixed;
+    width: 50%;
+    height: 100%;
+    background-color: rgb(255, 60, 92);
+    top: 0px;
+    z-index: -1;
+  }
+
+  .SheetNavBar {
+    color: white;
+    position: fixed;
+    left: 2rem;
+    top: -2rem;
+  }
+
   header {
+    color: white;
     display: grid;
     justify-content: center;
     gap: 0px;
     margin: 20px;
+    position: fixed;
+    top: 6rem;
+    right: 50%;
+    
 
     h1 {
-      margin: 0;
+      color: white;
+      margin: 10px;
+      font-size: 4rem;
     }
-    p {
-      margin: auto
+
+    .controls {
+      color: white;
+      display: flex;
+      justify-content: right;
+      gap: 20px;
+      align-items: center;
+
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      .material-symbols-outlined:hover {
+        cursor: pointer;
+        color: black;
+      }
     }
+
   }
 
   .Edit-Lyrics-Chords {
-    background-color: pink;
     width: 500px;
-    margin: auto;
+    margin-left: 55%;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
     padding: 20px;
     font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
 
     .Edit-Title-Artist {
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
 
       input {
         font-family: Arial, Helvetica, sans-serif;
@@ -31,12 +72,19 @@
       #EditSongTitle {
         font-weight: bold;
         font-size: 1.5rem;
+        border-top: none;
+        border-right: none;
+        border-left: none;
       }
 
       #EditSongArtist {
         font-style: italic;
         font-size: 1rem;
         padding: 5px;
+        border-bottom: none;
+        border-top: none;
+        border-right: none;
+        border-left: none;
       }
     }
 
@@ -44,12 +92,16 @@
       font-family: 'Courier New', Courier, monospace;
       width: 500px;
       padding: 10px;
+      border: 1px solid rgb(202, 202, 202);
+      border-right: 2px solid black;
+      border-left: 2px solid black;
     }
 
     .chord-line {
       display: flex;
       font-weight: bold;
       color: rgb(0, 145, 218);
+      border-bottom: none;
 
       pre {
         margin-bottom: 0px;
@@ -57,13 +109,54 @@
     }
 
     .lyric-line {
-      margin-bottom: 10px;
+      margin-bottom: 1rem;
     }
 
     .controls {
       display: flex;
       width: 100%;
       justify-content: space-between;
+
+      #delete {
+        color: rgb(255, 60, 92);
+        cursor: pointer;
+        margin-right: -1.5rem;
+      }
+
+      #add {
+        color: rgb(255, 60, 92);
+        cursor: pointer;
+      }
     }
+
+    .material-symbols-outlined.md-48 {
+      font-size: 48px;
+      position: fixed;
+      margin-left: -5rem;
+      bottom: 2rem;
+      left: 50%;
+      color: rgb(255, 255, 255);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .save:hover {
+      color: black;
+    }
+  }
+
+  .material-symbols-outlined.md-36 {
+    font-size: 36px;
+    color: white;
+    position: fixed;
+    z-index: 1;
+    bottom: 2rem;
+    left: 2rem;
+    cursor: pointer;
+  }
+
+  .delete:hover {
+    color: black;
   }
 }

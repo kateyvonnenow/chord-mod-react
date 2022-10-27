@@ -50,6 +50,10 @@ function ListOfSongs({
     SetSearchResults(newSearchResults)
   }
 
+  const navigateToAddASong = () => {
+    navigate(`/create`)
+  }
+
   return (
     <div className="AllSongs">
       <div className="fixed-browse-top">
@@ -65,8 +69,9 @@ function ListOfSongs({
 
         <img src="/images/FadeToTop.png" alt="" className="faded-white"/>
       </div>
-      
 
+      <span onClick={navigateToAddASong} className="material-symbols-outlined md-60 add-song">Add</span>
+      
       <section className="List-Of-Songs">
         {console.log(searchResults)}
         {searchResults.map((song, index) => {

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import SheetMusic from './SheetMusic'
 import './EditSheetMusic.scss'
+import NavBar from './NavBar'
 
 function EditSheetMusic({ currentSongId }) {
 
@@ -117,8 +118,25 @@ function EditSheetMusic({ currentSongId }) {
     navigate(`/songs`)
   }
 
+  const navigateBack = () => {
+    navigate(`/chords`)
+  }
+
   return (
     <div className="EditSheetMusic">
+
+      <section className="SheetNavBar">
+        <NavBar />
+      </section>
+      <header>
+        <h1>{songTitle}</h1>
+        <div className="controls">
+          <p> by {songArtist}</p>
+          <span onClick={navigateBack} className="material-symbols-outlined">close</span>
+        </div>
+      </header>
+
+      <div className="background"></div>
 
       <form onSubmit={editSongs} className="Edit-Lyrics-Chords">
         <input type="hidden" name="id" value={uniqueSongId}/>
@@ -150,15 +168,15 @@ function EditSheetMusic({ currentSongId }) {
         })}
 
         <section className="controls">
-          <span onClick={addNewLine} id="add">Add line</span>
-          <span onClick={removeLine} id="delete">Delete line</span>
+          <span onClick={addNewLine} id="add" className="material-symbols-outlined" >add_circle</span>
+          <span onClick={removeLine} id="delete" className="material-symbols-outlined">remove</span>
         </section>
         
-        <p>Up to index {indexTracker + 1}</p>
+        {/* <p>Up to index {indexTracker + 1}</p> */}
         
-        <button className="btn-primary save">Save</button>
+        <button className="material-symbols-outlined md-48 save">done</button>
       </form>
-      <span onClick={deleteSong}className="btn-primary delete">Delete</span>
+      <i onClick={deleteSong} className="material-symbols-outlined md-36 delete">delete</i>
     </div>
   )
 }

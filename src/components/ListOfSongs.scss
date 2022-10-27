@@ -3,6 +3,32 @@
   display: grid;
   justify-content: center;
 
+  .add-song {
+    position: fixed;
+    bottom: 3rem;
+    left: 3rem;
+    z-index: 5;
+    font-size: 4rem;
+    cursor: pointer;
+  }
+
+  .add-song:hover {
+    -webkit-animation: spin 1s ease-out;
+    -moz-animation: spin 1s ease-out;
+    animation: spin 1s ease-out;
+    color: rgb(255, 60, 92);
+  }
+
+  @keyframes spin {
+    0% {
+      rotate: 0%;
+    }
+
+    100% {
+      rotate: 100%;
+    }
+  }
+
   .fixed-browse-top {
     position: fixed;
     left: 323px;
